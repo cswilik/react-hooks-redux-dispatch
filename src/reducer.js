@@ -8,6 +8,21 @@ function changeState(state, action) {
 }
 
 let state = { count: 0 };
-let action = { type: "counter/increment" };
 
-changeState(state, action);
+function dispatch(action) {
+  state = changeState(state, action);
+  render();
+}
+
+dispatch({ type: "counter/increment" });
+console.log(state)
+dispatch({ type: "counter/increment" });
+console.log(state)
+dispatch({ type: "counter/increment" });
+console.log(state)
+
+function render() {
+  document.body.textContent = state.count;
+}
+
+render()
